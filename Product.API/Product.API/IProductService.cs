@@ -13,37 +13,19 @@ namespace Product.API
     public interface IProductService
     {
         [OperationContract]
-        Product GetProduct(int value);
+        Product GetProduct(int productId);
+        
+        [OperationContract]
+        Product CreateProduct(Product product);
 
         [OperationContract]
-        string GetData(int value);
+        Product UpdateProduct(Product product);
+
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        String DeleteProduct(Product product);
 
-        // TODO: Add your service operations here
+
     }
 
-
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
-    }
 }

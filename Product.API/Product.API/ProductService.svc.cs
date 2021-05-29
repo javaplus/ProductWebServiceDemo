@@ -12,27 +12,25 @@ namespace Product.API
     // NOTE: In order to launch WCF Test Client for testing this service, please select ProductService.svc or ProductService.svc.cs at the Solution Explorer and start debugging.
     public class ProductService : IProductService
     {
+        public Product CreateProduct(Product product)
+        {
+            product.ProductId = 1;
+            return product;
+        }
+
+        public string DeleteProduct(Product product)
+        {
+            return "Success";
+        }
 
         public Product GetProduct(int value)
         {
             return new Product(value, "my product");
         }
-        public string GetData(int value)
-        {
-            return string.Format("Hey bubba!  You entered: {0}", value);
-        }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public Product UpdateProduct(Product product)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return product;
         }
     }
 }
