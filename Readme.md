@@ -22,4 +22,10 @@ https://alexmg.dev/posts/self-hosting-wcf-services-with-the-autofac-wcf-integrat
 
 https://alexmg.dev/posts/making-self-hosting-with-autofac-wcf-integration-easier
 
+How to use Extension methods like in Autofac: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods
+
+
+Official MS Docs on Dependency Injection: https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-usage
+
+Should look at using this instead of Autofac if time permits.
 
