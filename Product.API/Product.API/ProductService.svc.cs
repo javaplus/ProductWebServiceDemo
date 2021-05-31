@@ -29,14 +29,15 @@ namespace Product.API
         public List<Product> GetAllProducts()
         {
 
-            List<Product> productList = new List<Product>();
+            List<Product> productList = _productDAO.getAllProducts();
+                /*new List<Product>();
 
             Product product = new Product(1, "sku","Newer title", "the Descritpion", 11.00, 12.00);
             productList.Add(product);
 
 
             Product product2 = new Product(2, "sku", "Other title", "the Descritpion", 11.00, 12.00);
-            productList.Add(product2);
+            productList.Add(product2);*/
 
             return productList;
         }

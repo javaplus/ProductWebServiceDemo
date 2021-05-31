@@ -8,6 +8,7 @@ namespace Product.API
 {
     public interface IProductDAO
     {
+        List<Product> getAllProducts();
         Product createProduct(Product product);
         String deleteProduct(Product product);
         Product getProductById(int id);

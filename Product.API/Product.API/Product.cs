@@ -13,10 +13,14 @@ namespace Product.API
         String sku;
         String title;
         String description;
-        double price;
-        double cost;
+        Decimal price;
+        Decimal cost;
 
-        public Product(int id, String sku, String title, String theDescription, double thePrice, double theCost)
+        public Product()
+        {
+
+        }
+        public Product(int id, String sku, String title, String theDescription, Decimal thePrice, Decimal theCost)
         {
             this.productId = id;
             this.sku = sku;
@@ -55,14 +59,14 @@ namespace Product.API
         }
 
         [DataMember]
-        public double Cost
+        public Decimal Cost
         {
             get { return cost; }
             set { cost = value; }
         }
 
         [DataMember]
-        public double Price
+        public Decimal Price
         {
             get { return price; }
             set { price = value; }
