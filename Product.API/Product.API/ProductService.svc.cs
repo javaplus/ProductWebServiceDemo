@@ -31,11 +31,11 @@ namespace Product.API
 
             List<Product> productList = new List<Product>();
 
-            Product product = new Product(1, "Newer title");
+            Product product = new Product(1, "sku","Newer title", "the Descritpion", 11.00, 12.00);
             productList.Add(product);
 
 
-            Product product2 = new Product(2, "Other title");
+            Product product2 = new Product(2, "sku", "Other title", "the Descritpion", 11.00, 12.00);
             productList.Add(product2);
 
             return productList;

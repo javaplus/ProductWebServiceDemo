@@ -11,7 +11,7 @@ namespace Product.API
         public Product createProduct(Product product)
         {
             Console.WriteLine("In create product!!!");
-            return new Product(1, "newProduct");
+            return new Product(1, "sku", "newProduct", "My desc", 10.00, 9.00);
         }
 
         public string deleteProduct(Product product)
@@ -56,7 +56,7 @@ namespace Product.API
                 Console.WriteLine(e.ToString());
             }
 
-            return new Product(id, "your product sir.");
+            return new Product(id,"sku", "your product sir.", "a description", 10.00, 9.00);
         }
 
         public Product updateProduct(Product product)

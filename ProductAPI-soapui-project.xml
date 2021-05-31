@@ -7,6 +7,12 @@
       <xsd:import schemaLocation="http://localhost:54035/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Product.API"/>
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IProductService_GetAllProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProducts"/>
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetAllProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductsResponse"/>
+  </wsdl:message>
   <wsdl:message name="IProductService_GetProduct_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProduct"/>
   </wsdl:message>
@@ -32,6 +38,10 @@
     <wsdl:part name="parameters" element="tns:DeleteProductResponse"/>
   </wsdl:message>
   <wsdl:portType name="IProductService">
+    <wsdl:operation name="GetAllProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetAllProducts" message="tns:IProductService_GetAllProducts_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetAllProductsResponse" message="tns:IProductService_GetAllProducts_OutputMessage"/>
+    </wsdl:operation>
     <wsdl:operation name="GetProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetProduct" message="tns:IProductService_GetProduct_InputMessage"/>
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetProductResponse" message="tns:IProductService_GetProduct_OutputMessage"/>
@@ -51,6 +61,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetAllProducts">
+      <soap:operation soapAction="http://tempuri.org/IProductService/GetAllProducts" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProduct">
       <soap:operation soapAction="http://tempuri.org/IProductService/GetProduct" style="document"/>
       <wsdl:input>
@@ -95,6 +114,18 @@
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:54035/ProductService.svc?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
   <xs:import schemaLocation="http://localhost:54035/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Product.API"/>
+  <xs:element name="GetAllProducts">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllProductsResult" nillable="true" type="q1:ArrayOfProduct" xmlns:q1="http://schemas.datacontract.org/2004/07/Product.API"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetProduct">
     <xs:complexType>
       <xs:sequence>
@@ -105,42 +136,42 @@
   <xs:element name="GetProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetProductResult" nillable="true" type="q1:Product" xmlns:q1="http://schemas.datacontract.org/2004/07/Product.API"/>
+        <xs:element minOccurs="0" name="GetProductResult" nillable="true" type="q2:Product" xmlns:q2="http://schemas.datacontract.org/2004/07/Product.API"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateProduct">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="product" nillable="true" type="q2:Product" xmlns:q2="http://schemas.datacontract.org/2004/07/Product.API"/>
+        <xs:element minOccurs="0" name="product" nillable="true" type="q3:Product" xmlns:q3="http://schemas.datacontract.org/2004/07/Product.API"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CreateProductResult" nillable="true" type="q3:Product" xmlns:q3="http://schemas.datacontract.org/2004/07/Product.API"/>
+        <xs:element minOccurs="0" name="CreateProductResult" nillable="true" type="q4:Product" xmlns:q4="http://schemas.datacontract.org/2004/07/Product.API"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProduct">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="product" nillable="true" type="q4:Product" xmlns:q4="http://schemas.datacontract.org/2004/07/Product.API"/>
+        <xs:element minOccurs="0" name="product" nillable="true" type="q5:Product" xmlns:q5="http://schemas.datacontract.org/2004/07/Product.API"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateProductResult" nillable="true" type="q5:Product" xmlns:q5="http://schemas.datacontract.org/2004/07/Product.API"/>
+        <xs:element minOccurs="0" name="UpdateProductResult" nillable="true" type="q6:Product" xmlns:q6="http://schemas.datacontract.org/2004/07/Product.API"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteProduct">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="product" nillable="true" type="q6:Product" xmlns:q6="http://schemas.datacontract.org/2004/07/Product.API"/>
+        <xs:element minOccurs="0" name="product" nillable="true" type="q7:Product" xmlns:q7="http://schemas.datacontract.org/2004/07/Product.API"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,6 +183,12 @@
     </xs:complexType>
   </xs:element>
 </xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:54035/ProductService.svc?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Product.API" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/Product.API">
+  <xs:complexType name="ArrayOfProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct"/>
   <xs:complexType name="Product">
     <xs:sequence>
       <xs:element minOccurs="0" name="ProductId" type="xs:int"/>
@@ -199,7 +236,7 @@
   <xs:attribute name="FactoryType" type="xs:QName"/>
   <xs:attribute name="Id" type="xs:ID"/>
   <xs:attribute name="Ref" type="xs:IDREF"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:54035/ProductService.svc</con:endpoint><con:endpoint>http://localhost:9090/soap/Products</con:endpoint></con:endpoints><con:operation id="2e6e6413-a77a-4225-a817-6fbc4674d929" isOneWay="false" action="http://tempuri.org/IProductService/GetProduct" name="GetProduct" bindingOperationName="GetProduct" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="93169992-51c4-4902-bb64-bbb38ec68170" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/soap/Products</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:54035/ProductService.svc</con:endpoint><con:endpoint>http://localhost:9090/soap/Products</con:endpoint></con:endpoints><con:operation id="2e6e6413-a77a-4225-a817-6fbc4674d929" isOneWay="false" action="http://tempuri.org/IProductService/GetProduct" name="GetProduct" bindingOperationName="GetProduct" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="93169992-51c4-4902-bb64-bbb38ec68170" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:54035/ProductService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tem:GetProduct>\r
@@ -246,4 +283,9 @@
          </tem:product>\r
       </tem:DeleteProduct>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IProductService/DeleteProduct"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IProductService/DeleteProduct"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="55c54390-d301-4ac0-b0c2-8c7d8d986868" isOneWay="false" action="http://tempuri.org/IProductService/GetAllProducts" name="GetAllProducts" bindingOperationName="GetAllProducts" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="82147222-ce86-40ff-b57a-8355b64aa1c5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:54035/ProductService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:GetAllProducts/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IProductService/GetAllProducts"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
