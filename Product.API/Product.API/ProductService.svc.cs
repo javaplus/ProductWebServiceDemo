@@ -15,16 +15,31 @@ namespace Product.API
      
         private readonly IProductDAO _productDAO;
 
-        /*public ProductService()
+        public ProductService()
         {
             _productDAO = new ProductDAO();
-        }*/
+        }
         public ProductService(IProductDAO productDAO)
         {
             Console.WriteLine("In my Constructor with injected dependency!");
             _productDAO = productDAO;
         }
 
+
+        public List<Product> GetAllProducts()
+        {
+
+            List<Product> productList = new List<Product>();
+
+            Product product = new Product(1, "Newer title");
+            productList.Add(product);
+
+
+            Product product2 = new Product(2, "Other title");
+            productList.Add(product2);
+
+            return productList;
+        }
 
         public Product CreateProduct(Product product)
         {

@@ -12,6 +12,10 @@ namespace Product.API
     [ServiceContract]
     public interface IProductService
     {
+
+        [OperationContract]
+        List<Product> GetAllProducts();
+
         [OperationContract]
         Product GetProduct(int productId);
         
